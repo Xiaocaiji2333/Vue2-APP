@@ -1,9 +1,13 @@
 <template>
-  <div class="msite">
-    <Header>
-      <span slot='left'>1</span>
-      <span slot='center'>2</span>
-      <span slot='right'>3</span>
+  <div>
+    <Header class='msite-header'>
+      <i slot='left' class='iconfont icon-sousu' @click='toSearch'></i>
+      <span slot='center'>首页</span>
+      <div slot='right' class='msite-right'>
+        <a href="#/login">登录</a>
+        &nbsp;|&nbsp;
+        <a href="#/register">注册</a>
+      </div>
     </Header>
     <div class='msite-contain'>
       MSite
@@ -18,15 +22,28 @@ export default {
   name: 'MSite',
   components: {
     Header
+  },
+  methods: {
+    toSearch () {
+      this.$router.push('/search')
+    },
+    toLogin () {
+      this.$router.push('/login')
+    },
+    toRegister () {
+      this.$router.push('/register')
+    }
   }
 }
 </script>
 
 <style scoped>
-  .msite {
-    /* height: calc(100% - 46 - 45); */
-  }
-  .msite-contain {
-    /* margin-top: 46px; */
-  }
+@import '../../assets/icon/font_icon/iconfont.css';
+
+.msite-header {
+  background-color: green;
+}
+.msite-right>a {
+  color: #fff;
+}
 </style>

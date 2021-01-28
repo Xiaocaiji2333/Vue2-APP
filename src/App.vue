@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
-    <Footer>
+    <Footer v-show='judgeHeader'>
       <FooterItem v-for="(item,index) in footerNav" :key='index' :pathTo='(item.path)'>
         <i slot='icon' :class='"iconfont "+(item.icon)'></i>
         <span slot='text'>{{item.text}}</span>
@@ -25,7 +25,7 @@ export default {
       footerNav: [
         {
           icon: 'icon-dibudaohang-shouye',
-          text: '外卖',
+          text: '首页',
           path: '/msite'
         },
         {
@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     judgeHeader () {
-      return true
+      return this.$route.path !== '/login' && this.$route.path !== '/register'
     }
   }
 }
@@ -56,6 +56,7 @@ export default {
 
 <style scoped>
 @import './assets/icon/font_icon/iconfont.css';
+
 #app {
   width: 100%;
   height: calc(100% - 92px);

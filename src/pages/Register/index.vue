@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Header class='profile-header'>
+    <Header class='register-header'>
       <span slot='left'></span>
-      <span slot='center'>我的</span>
+      <span slot='center'>注册</span>
       <span slot='right'></span>
     </Header>
-    <div class='profile-contain'>
-      Profile
+    <div>
+      <button @click='register'>登录</button>
     </div>
   </div>
 </template>
@@ -15,15 +15,20 @@
 import Header from '../../components/Header'
 
 export default {
-  name: 'Profile',
+  name: 'Register',
   components: {
     Header
+  },
+  methods: {
+    register () {
+      this.$router.push('/login')
+    }
   }
 }
 </script>
 
 <style scoped>
-.profile-header {
+.register-header {
   background-color: green;
 }
 </style>

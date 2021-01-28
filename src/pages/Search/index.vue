@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Header>
-      <span slot='left'>1</span>
-      <span slot='center'>2</span>
-      <span slot='right'>3</span>
+    <Header class='search-header'>
+      <span slot='left'></span>
+      <input type='text' placeholder='请输入关键字' slot='center'/>
+      <span slot='right' class='iconfont icon-sousu'></span>
     </Header>
     <div class='search-contain'>
       Search
@@ -23,7 +23,13 @@ export default {
 </script>
 
 <style scoped>
-  .search-contain {
-    margin-top: 46px;
-  }
+@import '../../assets/icon/font_icon/iconfont.css';
+
+.search-header {
+  background-color: #ccc;
+}
+.search-header input {
+  width: 100%;
+  height: 50%;
+}
 </style>

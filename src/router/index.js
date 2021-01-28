@@ -4,6 +4,8 @@ import MSite from '../pages/MSite'
 import Order from '../pages/Order'
 import Profile from '../pages/Profile'
 import Search from '../pages/Search'
+import Login from '../pages/Login'
+import Register from '../pages/Register'
 
 Vue.use(Router)
 
@@ -28,6 +30,14 @@ export default new Router({
     {
       path: '/search',
       component: Search
+    },
+    {
+      path: '/login',
+      component: Login
+    },
+    {
+      path: '/register',
+      component: Register
     }
   ]
 })

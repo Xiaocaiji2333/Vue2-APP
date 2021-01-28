@@ -1,9 +1,9 @@
 <template>
   <div>
-    <Header>
-      <span slot='left'>1</span>
-      <span slot='center'>2</span>
-      <span slot='right'>3</span>
+    <Header class='order-header'>
+      <span slot='left'></span>
+      <span slot='center'>订单</span>
+      <span slot='right'></span>
     </Header>
     <div class='order-contain'>
       Order
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style scoped>
-  .order-contain {
-    margin-top: 46px;
-  }
+.order-header {
+  background-color: green;
+}
 </style>

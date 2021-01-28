@@ -1,12 +1,12 @@
 <template>
   <div>
-    <Header class='profile-header'>
+    <Header class='login-header'>
       <span slot='left'></span>
-      <span slot='center'>我的</span>
+      <span slot='center'>登录</span>
       <span slot='right'></span>
     </Header>
-    <div class='profile-contain'>
-      Profile
+    <div>
+      <button @click='login'>登录</button>
     </div>
   </div>
 </template>
@@ -15,15 +15,20 @@
 import Header from '../../components/Header'
 
 export default {
-  name: 'Profile',
+  name: 'Login',
   components: {
     Header
+  },
+  methods: {
+    login () {
+      this.$router.push('/msite')
+    }
   }
 }
 </script>
 
 <style scoped>
-.profile-header {
+.login-header {
   background-color: green;
 }
 </style>

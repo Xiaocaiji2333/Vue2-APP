@@ -13,23 +13,22 @@ export default {
 </script>
 
 <style scoped>
-  .header {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 46px;
-    background-color: green;
-    display: flex;
-    justify-content: space-between;
+.header {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 46px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 46px;
+  color: #fff;
+  text-align: center;
   }
-  .left, .right {
-    width: 46px;
-    text-align: center;
-    line-height: 46px;
-  }
-  .center {
-    flex: 1;
-    text-align: center;
-    line-height: 46px;
-  }
+.left, .right {
+  width: auto;
+  padding: 0 8px;
+}
+.center {
+  flex: 1;
+}
 </style>
