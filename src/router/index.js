@@ -6,6 +6,8 @@ import Profile from '../pages/Profile'
 import Search from '../pages/Search'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
+import Message from '../components/verify/Message'
+import Password from '../components/verify/Password'
 
 Vue.use(Router)
 
@@ -33,7 +35,20 @@ export default new Router({
     },
     {
       path: '/login',
-      component: Login
+      component: Login,
+      children: [
+        {
+          path: 'msg',
+          component: Message
+        },
+        {
+          path: 'psw',
+          component: Password
+        },
+        { path: '',
+          redirect: 'msg'
+        }
+      ]
     },
     {
       path: '/register',
