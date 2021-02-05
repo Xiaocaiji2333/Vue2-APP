@@ -27,10 +27,10 @@ export default {
   },
   methods: {
     toMsg () {
-      this.$router.push('/login/msg')
+      this.$router.replace('/login/msg')
     },
     toPsw () {
-      this.$router.push('/login/psw')
+      this.$router.replace('/login/psw')
     },
     login () {
       this.$router.push('/msite')

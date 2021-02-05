@@ -1,18 +1,37 @@
 <template>
-  <div>
-    <input type="text" placeholder="请输入手机号"/>
-    <input type="text" placeholder="请输入密码"/>
+  <div class='password-contain'>
+    <input type="text" placeholder="请输入手机号" maxlength="11" v-model='phone'/>
+    <input v-if='!showPsw' type="password" placeholder="请输入密码"/>
+    <input v-else type="text" placeholder="请输入密码"/>
+    <div class='showPsw' @click='() => {showPsw = !showPsw}'></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Password'
+  name: 'Password',
+  data () {
+    return {
+      phone: '',
+      showPsw: false
+    }
+  }
 }
 </script>
 
 <style scoped>
-input {
+.password-contain>input {
   margin: 3px;
+}
+.password-contain>.showPsw {
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  background-color: blue;
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  left: -25px;
+  top: 3px;
 }
 </style>
