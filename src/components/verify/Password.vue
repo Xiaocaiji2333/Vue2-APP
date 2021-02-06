@@ -1,8 +1,8 @@
 <template>
   <div class='password-contain'>
     <input type="text" placeholder="请输入手机号" maxlength="11" v-model='phone'/>
-    <input v-if='!showPsw' type="password" placeholder="请输入密码"/>
-    <input v-else type="text" placeholder="请输入密码"/>
+    <input v-if='!showPsw' type="password" placeholder="请输入密码" v-model='psw'/>
+    <input v-else type="text" placeholder="请输入密码" v-model='psw'/>
     <div class='showPsw' @click='() => {showPsw = !showPsw}'></div>
   </div>
 </template>
@@ -13,6 +13,7 @@ export default {
   data () {
     return {
       phone: '',
+      psw: '',
       showPsw: false
     }
   }

@@ -14,26 +14,41 @@
         <button @click='register'>注册</button>
       </div>
     </div>
+    <AlertTip :alertText='alertText' v-show='showAlert'/>
   </div>
 </template>
 
 <script>
 import Header from '../../components/Header'
+import AlertTip from '../../components/AlertTip'
 
 export default {
   name: 'Login',
+  data () {
+    return {
+      alertText: '',
+      showAlert: false
+    }
+  },
   components: {
-    Header
+    Header,
+    AlertTip
   },
   methods: {
     toMsg () {
-      this.$router.replace('/login/msg')
+      this.$router.push('/login/msg')
     },
     toPsw () {
-      this.$router.replace('/login/psw')
+      this.$router.push('/login/psw')
     },
     login () {
-      this.$router.push('/msite')
+      // console.log(this.$children[1].$refs)
+      if (this.$children[1].$refs) { // 短信验证
+        this.showAlert = !this.showAlert
+      } else { // 密码验证
+
+      }
+      // this.$router.push('/msite')
     },
     register () {
       this.$router.push('/register')

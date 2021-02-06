@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     judgeHeader () {
-      return this.$route.path !== '/login' && this.$route.path !== '/register'
+      return this.$route.path.indexOf('/login') === -1 && this.$route.path !== '/register'
     }
   }
 }

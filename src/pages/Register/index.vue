@@ -7,10 +7,10 @@
     </Header>
     <div class='register-contain'>
       <input type="text" placeholder="请输入手机号" maxlength="11" v-model='phone'/>
-      <input v-if='!showPsw' type="password" placeholder="请输入密码"/>
-      <input v-else type="text" placeholder="请输入密码"/>
-      <div class='showPsw' @click='() => {showPsw = !showPsw}'></div>
-      <input type="text" placeholder="请输入验证码"/>
+      <input v-if='!showPsw' type="password" placeholder="请输入密码" v-model='psw'/>
+      <input v-else type="text" placeholder="请输入密码" v-model='psw'/>
+      <div class='showPsw' @click='() => { showPsw = !showPsw }'></div>
+      <input type="text" placeholder="请输入验证码" v-model='captcha'/>
       <button v-if='!timeDown' :disabled='!rightPsw' @click='getVerifyCode'>获取验证码</button>
       <button v-else disabled='true'>已发送({{timeDown}}s)</button>
       <div class='btn'>
@@ -32,6 +32,8 @@ export default {
   data () {
     return {
       phone: '',
+      psw: '',
+      captcha: '',
       timeDown: 0,
       showPsw: false
     }
