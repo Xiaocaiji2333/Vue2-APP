@@ -1,8 +1,8 @@
 <template>
   <div class='password-contain'>
-    <input type="text" placeholder="请输入手机号" maxlength="11" v-model='phone'/>
-    <input v-if='!showPsw' type="password" placeholder="请输入密码" v-model='psw'/>
-    <input v-else type="text" placeholder="请输入密码" v-model='psw'/>
+    <input type="text" ref='phone' placeholder="请输入手机号" maxlength="11" @keyup='changePhone'/>
+    <input v-if='!showPsw' type="password" ref='psw' placeholder="请输入密码" @keyup='changePsw'/>
+    <input v-else type="text" ref='psw' placeholder="请输入密码" @keyup='changePsw'/>
     <div class='showPsw' @click='() => {showPsw = !showPsw}'></div>
   </div>
 </template>
@@ -10,11 +10,21 @@
 <script>
 export default {
   name: 'Password',
+  props: [
+    'phone',
+    'psw'
+  ],
   data () {
     return {
-      phone: '',
-      psw: '',
       showPsw: false
+    }
+  },
+  methods: {
+    changePhone () {
+      this.$emit('changePhone', this.$refs.phone.value)
+    },
+    changePsw () {
+      this.$emit('changePsw', this.$refs.psw.value)
     }
   }
 }

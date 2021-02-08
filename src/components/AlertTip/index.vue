@@ -5,7 +5,7 @@
         <span></span>
         <span></span>
       </div>
-      <p class="tip_text">{{alertText}}</p>
+      <p class="tip_text">{{ alertText }}</p>
       <div class="confrim" @click="closeTip">确认</div>
     </section>
   </div>
@@ -16,6 +16,7 @@ export default {
   props: ['alertText'],
   methods: {
     closeTip () {
+      // console.log(this.alertText)
       this.$emit('closeTip')
     }
   }

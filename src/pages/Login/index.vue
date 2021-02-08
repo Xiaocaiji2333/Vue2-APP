@@ -8,13 +8,20 @@
     <div class='login-contain'>
       <span @click='toMsg'>短信验证</span>
       <span @click='toPsw'>密码验证</span>
-      <router-view></router-view>
+      <router-view
+        :phone='phone'
+        :psw='psw'
+        :captcha='captcha'
+        :rightPsw='rightPsw'
+        @changePhone='changePhone'
+        @changePsw='changePsw'
+        @changeCaptcha='changeCaptcha'/>
       <div class='btn'>
         <button @click='login'>登录</button>
         <button @click='register'>注册</button>
       </div>
     </div>
-    <AlertTip :alertText='alertText' v-show='showAlert'/>
+    <AlertTip :alertText='alertText' @closeTip='closeTip' v-show='showAlert'/>
   </div>
 </template>
 
@@ -24,15 +31,24 @@ import AlertTip from '../../components/AlertTip'
 
 export default {
   name: 'Login',
+  components: {
+    Header,
+    AlertTip
+  },
   data () {
     return {
+      phone: '',
+      psw: '',
+      captcha: '',
       alertText: '',
       showAlert: false
     }
   },
-  components: {
-    Header,
-    AlertTip
+  computed: {
+    rightPsw () {
+      console.log(this.phone)
+      return /^1\d{10}$/.test(this.phone)
+    }
   },
   methods: {
     toMsg () {
@@ -43,15 +59,29 @@ export default {
     },
     login () {
       // console.log(this.$children[1].$refs)
-      if (this.$children[1].$refs) { // 短信验证
-        this.showAlert = !this.showAlert
+      if (this.$children[1].$refs.message) { // 短信验证
+        if (!this.rightPsw) {
+          this.alertText = '手机号错误！'
+          this.showAlert = true
+        }
       } else { // 密码验证
-
       }
       // this.$router.push('/msite')
     },
     register () {
       this.$router.push('/register')
+    },
+    changePhone (val) {
+      this.phone = val
+    },
+    changePsw (val) {
+      this.psw = val
+    },
+    changeCaptcha (val) {
+      this.captcha = val
+    },
+    closeTip () {
+      this.showAlert = false
     }
   }
 }
